@@ -6,11 +6,17 @@ namespace Default
 {
     public class BattleSystem : StateMachine
     {
-        [SerializeField]
         public GameObject prefab;
         public GameObject spawnedObj;
 
-        public List<GameObject> cards = new List<GameObject>();
+
+        //public List<GameObject> cards = new List<GameObject>();
+        public Queue<GameObject> cards = new Queue<GameObject>();
+        /*[SerializeField]
+        public GameObject prefab;
+        public GameObject spawnedObj;
+
+        public Queue<GameObject> cards = new Queue<GameObject>();*/
 
         void Start()
         {

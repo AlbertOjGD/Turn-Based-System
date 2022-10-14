@@ -25,7 +25,8 @@ namespace Default
 
             //instantiate a card and add it to the list
             BattleSystem.spawnedObj = BattleSystem.Instantiate(BattleSystem.prefab);
-            BattleSystem.cards.Add(BattleSystem.spawnedObj);
+            //BattleSystem.cards.Add(BattleSystem.spawnedObj);
+            BattleSystem.cards.Enqueue(BattleSystem.spawnedObj);
 
             yield break;
         }
@@ -35,9 +36,13 @@ namespace Default
             //remove most recent object from list
             if (BattleSystem.cards.Count > 0)
             {
-                BattleSystem.Destroy(BattleSystem.cards[BattleSystem.cards.Count - 1]);
-                BattleSystem.cards.Remove(BattleSystem.cards[BattleSystem.cards.Count - 1]);
+                BattleSystem.Destroy(BattleSystem.cards.Dequeue());
+
+                //BattleSystem.Destroy(BattleSystem.cards[BattleSystem.cards.Count - 1]);
+                //BattleSystem.cards.Remove(BattleSystem.cards[BattleSystem.cards.Count - 1]);
             }
+
+
 
             yield break;
         }

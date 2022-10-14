@@ -21,10 +21,19 @@ namespace Default
 
             for (int i = 0; i - 1 < arrayLength; i++)
             {
-                BattleSystem.Destroy(BattleSystem.cards[arrayLength - i]);
-                BattleSystem.cards.Remove(BattleSystem.cards[arrayLength - i]);
+                BattleSystem.Destroy(BattleSystem.cards.Dequeue());
+                //BattleSystem.Destroy(BattleSystem.cards[arrayLength - i]);
+                //BattleSystem.cards.Remove(BattleSystem.cards[arrayLength - i]);
                 yield return new WaitForSeconds(0.5f);
             }
+
+            /*for (int i = arrayLength - 1; i > 0; i--)
+            {
+                BattleSystem.Destroy(BattleSystem.cards.Dequeue());
+                //BattleSystem.Destroy(BattleSystem.cards[arrayLength - i]);
+                //BattleSystem.cards.Remove(BattleSystem.cards[arrayLength - i]);
+                yield return new WaitForSeconds(0.5f);
+            }*/
 
             BattleSystem.SetState(new PlayerTurn(BattleSystem));
 
