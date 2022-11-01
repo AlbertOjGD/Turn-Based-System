@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Default
-{
-    public class BattleSystem : StateMachine
+public class BattleSystem : StateMachine
     {
-        [SerializeField]
-        public GameObject prefab;
-        public GameObject spawnedObj;
-
-        public List<GameObject> cards = new List<GameObject>();
+    [SerializeField]
+    public GameObject prefab;
+    public GameObject spawnedObj;
+    public List<GameObject> cards = new List<GameObject>();
+    public bool selecting;
 
         void Start()
         {
@@ -33,7 +31,7 @@ namespace Default
             }
 
             //remove all cards sequentially from the cards list
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && !selecting)
             {
                 ResolveButtonPressed();
             }
@@ -52,7 +50,6 @@ namespace Default
         public void ResolveButtonPressed()
         {
             StartCoroutine(State.Resolve());
-        }
     }
 }
 

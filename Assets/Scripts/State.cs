@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Default
-{
     public abstract class State
     {
         protected BattleSystem BattleSystem;
@@ -37,4 +35,3 @@ namespace Default
             yield break;
         }
     }
-}

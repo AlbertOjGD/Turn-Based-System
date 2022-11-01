@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Default
-{
-    public class Begin : State
+  public class Begin : State
     {
         public Begin(BattleSystem battleSystem) : base(battleSystem)
         {
@@ -20,4 +18,4 @@ namespace Default
             BattleSystem.SetState(new PlayerTurn(BattleSystem));
         }
     }
-}
+

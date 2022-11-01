@@ -2,8 +2,6 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Default
-{
     public class Resolution : State
     {
 
@@ -31,4 +29,3 @@ namespace Default
             yield break;
         }
     }
-}
