@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Default
-{
-    public class PlayerTurn : State
+ public class PlayerTurn : State
     {
         public PlayerTurn(BattleSystem battleSystem) : base(battleSystem)
         {
@@ -49,4 +47,4 @@ namespace Default
             yield break;
         }
     }
-}
+
