@@ -9,7 +9,7 @@ public class CardGrid : MonoBehaviour
 
     void Start()
     {
-        grid = new Grid(4, 2, new Vector2(2f, 4f), this.transform.position);
+        grid = new Grid(4, 2, new Vector2(8f, 8f), this.transform.position);
     }
     private void Update()
     {

@@ -11,6 +11,7 @@ public class Grid
     private Vector3 originPosition;
     private int[,] gridArray;
     private TextMesh[,] debugTextArray;
+    private int order;
 
     public Grid(int width, int height, Vector2 cellSize, Vector3 originPosition)
     {
@@ -21,12 +22,15 @@ public class Grid
 
         gridArray = new int[width, height];
         debugTextArray = new TextMesh[width, height];
+        order = 0;
 
         for (int x = 0; x < gridArray.GetLength(0); x++)
         {
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-                debugTextArray[x, y] = UtilsClass.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize.x, cellSize.y) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
+                order++;
+                gridArray[x, y] = order;
+                debugTextArray[x, y] = UtilsClass.CreateWorldText(order.ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize.x, cellSize.y) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
             }
