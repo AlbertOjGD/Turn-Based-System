@@ -2,30 +2,28 @@
 using System.Collections;
 using UnityEngine;
 
-    public class Resolution : State
+public class Resolution : State
     {
+    public Resolution(BattleSystem battleSystem) : base(battleSystem)
+    {
+    }
 
-        public Resolution(BattleSystem battleSystem) : base(battleSystem)
+    public override IEnumerator Start()
+    {
+        BattleSystem.paused = true;
+        Debug.Log("State Machine - Resolution");
+        for (int i = 0; i < BattleSystem.gm.resolutionOrder.Count; i++)
         {
-        }
-
-        private int arrayLength;
-
-        public override IEnumerator Start()
-        {
-            Debug.Log("State Machine - Resolution");
-
-            arrayLength = BattleSystem.cards.Count - 1;
-
-            for (int i = 0; i - 1 < arrayLength; i++)
+            if (BattleSystem.gm.resolutionOrder[i].GetComponent<GridCell>().myCard != null)
             {
-                BattleSystem.Destroy(BattleSystem.cards[arrayLength - i]);
-                BattleSystem.cards.Remove(BattleSystem.cards[arrayLength - i]);
+                BattleSystem.gm.resolutionOrder[i].GetComponent<GridCell>().myCard.GetComponent<DraggableObject>().PlayCard();
                 yield return new WaitForSeconds(0.5f);
             }
+        }
 
-            BattleSystem.SetState(new PlayerTurn(BattleSystem));
-
-            yield break;
+        BattleSystem.paused = false;
+        BattleSystem.SetState(new PlayerTurn(BattleSystem));
+        
+        yield break;
         }
     }

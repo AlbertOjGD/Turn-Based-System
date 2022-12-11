@@ -21,21 +21,11 @@ using UnityEngine;
         public override IEnumerator Attack()
         {
 
-            //instantiate a card and add it to the list
-            BattleSystem.spawnedObj = BattleSystem.Instantiate(BattleSystem.prefab);
-            BattleSystem.cards.Add(BattleSystem.spawnedObj);
-
             yield break;
         }
 
         public override IEnumerator Remove()
         {
-            //remove most recent object from list
-            if (BattleSystem.cards.Count > 0)
-            {
-                BattleSystem.Destroy(BattleSystem.cards[BattleSystem.cards.Count - 1]);
-                BattleSystem.cards.Remove(BattleSystem.cards[BattleSystem.cards.Count - 1]);
-            }
 
             yield break;
         }

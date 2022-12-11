@@ -7,18 +7,20 @@ public class BattleSystem : StateMachine
     [SerializeField]
     public GameObject prefab;
     public GameObject spawnedObj;
-    public List<GameObject> cards = new List<GameObject>();
+    public GridManager gm;
     public bool selecting;
+    public bool paused;
 
         void Start()
         {
+            gm = FindObjectOfType<GridManager>();
             //call for initial state machine state
             SetState(new Begin(this));
         }
 
         private void Update()
         {
-            //spawn a prefab and add it to the 'cards' list
+            /*spawn a prefab and add it to the 'cards' list
             if (Input.GetKeyDown(KeyCode.A))
             {
                 AttackButtonPressed();
@@ -28,14 +30,19 @@ public class BattleSystem : StateMachine
             if (Input.GetKeyDown(KeyCode.S))
             {
                 RemoveButtonPressed();
-            }
+            }*/
 
             //remove all cards sequentially from the cards list
             if (Input.GetKeyDown(KeyCode.Space) && !selecting)
             {
                 ResolveButtonPressed();
             }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
+    }
 
         public void AttackButtonPressed()
         {
